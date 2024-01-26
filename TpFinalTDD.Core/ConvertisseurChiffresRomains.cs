@@ -14,6 +14,13 @@
             {
                 throw new ArgumentException("Votre chaine ne peut pas être vide");
             }
+            foreach (char caractere in chiffresRomains)
+            {
+                if (!"IVXLCDM".Contains(caractere))
+                {
+                    throw new ArgumentException($"Le caractère {caractere} n'est pas autorisé");
+                }
+            }
 
             throw new NotImplementedException();
 
