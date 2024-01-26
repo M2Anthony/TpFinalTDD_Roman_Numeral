@@ -20,6 +20,20 @@ namespace TpFinalTDD.TestsNUnit
             Assert.Throws<ArgumentException>( () => _convertisseur.ConversionVersEntier("") );
 
         }
-        
+
+        [Test]
+        [TestCase("j")]
+        [TestCase("p")]
+        [TestCase("h")]
+        [TestCase("hI")]
+        [TestCase("a")]
+        [TestCase("XVaI")]
+        public void ConverstionVersEntier_Quand_chiffreRomains_ContientAutreChoseQuauMoinsUneDesLettres_I_V_X_L_C_D_M_Alors_ArgumentException(string chiffresRomains)
+        {
+            // Assert & Act
+
+            Assert.Throws<ArgumentException>(() => _convertisseur.ConversionVersEntier(chiffresRomains));
+        }
+
     }
 }
