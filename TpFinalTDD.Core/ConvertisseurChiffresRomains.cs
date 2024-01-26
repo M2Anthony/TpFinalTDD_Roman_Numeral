@@ -2,6 +2,8 @@
 {
     public class ConvertisseurChiffresRomains
     {
+        
+
         /// <summary>
         /// Méthode permettant de convertir des chiffres romains en nombre entier
         /// </summary>
@@ -16,10 +18,15 @@
             }
             foreach (char caractere in chiffresRomains)
             {
-                if (!"IVXLCDM".Contains(caractere))
+                if (!Enum.GetNames(typeof(EquivalenceChiffreRomainsVersEntier)).Cast<string>().ToList().Contains(caractere.ToString()))
                 {
                     throw new ArgumentException($"Le caractère {caractere} n'est pas autorisé");
                 }
+            }
+
+            if (chiffresRomains.Length == 1)
+            {
+               return (int) Enum.Parse(typeof(EquivalenceChiffreRomainsVersEntier), chiffresRomains);
             }
 
             throw new NotImplementedException();
@@ -36,5 +43,16 @@
         {
             throw new NotImplementedException();
         }
+    }
+
+    internal enum EquivalenceChiffreRomainsVersEntier
+    {
+        I = 1,
+        V = 5,
+        X = 10,
+        L = 50,
+        C = 100,
+        D = 500,
+        M = 1000
     }
 }

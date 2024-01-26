@@ -64,7 +64,7 @@ namespace TpFinalTDD.TestsNUnit
         {
             // Assert & Act
 
-            Assert.Equals(_convertisseur.ConversionVersEntier(chiffreRomain), resultatAttendu);
+            Assert.That(resultatAttendu, Is.EqualTo(_convertisseur.ConversionVersEntier(chiffreRomain)));
         }
 
     }
