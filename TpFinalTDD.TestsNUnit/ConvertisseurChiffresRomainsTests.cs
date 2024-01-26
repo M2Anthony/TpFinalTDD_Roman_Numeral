@@ -67,5 +67,21 @@ namespace TpFinalTDD.TestsNUnit
             Assert.That(resultatAttendu, Is.EqualTo(_convertisseur.ConversionVersEntier(chiffreRomain)));
         }
 
+        [Test]
+        [TestCase("IV", 4)]
+        [TestCase("VI", 6)]
+        [TestCase("VIII", 8)]
+        [TestCase("XV", 15)]
+        [TestCase("LX", 60)]
+        [TestCase("DCCCL", 850)]
+        [TestCase("CMXLIV", 944)]
+        [TestCase("MM", 2000)]
+        public void ConversionVersEntier_Quand_chiffresRomainsSontValides_Alors_NombreEntierCorrespondant(string chiffreRomain, int resultatAttendu)
+        {
+            // Assert & Act
+
+            Assert.That(resultatAttendu, Is.EqualTo(_convertisseur.ConversionVersEntier(chiffreRomain)));
+
+        }
     }
 }
