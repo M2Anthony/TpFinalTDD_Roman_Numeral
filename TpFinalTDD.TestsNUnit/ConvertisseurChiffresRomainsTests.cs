@@ -35,5 +35,20 @@ namespace TpFinalTDD.TestsNUnit
             Assert.Throws<ArgumentException>(() => _convertisseur.ConversionVersEntier(chiffresRomains));
         }
 
+        [Test]
+        [TestCase("i")]
+        [TestCase("v")]
+        [TestCase("x")]
+        [TestCase("XiV")]
+        [TestCase("XIv")]
+        [TestCase("mDC")]
+        public void ConversionVersEntier_Quand_chiffresRomains_ContientUniquement_CaractereAutorise_Mais_EstMinuscule_Alors_ArgumentException(string chiffresRomains)
+        {
+            // Assert & Act
+
+            Assert.Throws<ArgumentException>(() => _convertisseur.ConversionVersEntier(chiffresRomains));
+
+        }
+
     }
 }
