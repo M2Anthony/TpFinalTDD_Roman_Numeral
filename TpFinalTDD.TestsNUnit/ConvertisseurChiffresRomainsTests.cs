@@ -9,6 +9,8 @@ namespace TpFinalTDD.TestsNUnit
         [SetUp]
         public void Setup()
         {
+            // Arrange 
+
             _convertisseur = new ConvertisseurChiffresRomains();
         }
 
@@ -48,6 +50,21 @@ namespace TpFinalTDD.TestsNUnit
 
             Assert.Throws<ArgumentException>(() => _convertisseur.ConversionVersEntier(chiffresRomains));
 
+        }
+
+        [Test]
+        [TestCase("I", 1)]
+        [TestCase("V", 5)]
+        [TestCase("X", 10)]
+        [TestCase("L", 50)]
+        [TestCase("C", 100)]
+        [TestCase("D", 500)]
+        [TestCase("M", 1000)]        
+        public void ConversionVersEntier_Quand_chiffreRomainEstValide_Alors_NombreEntierCorrespondant(string chiffreRomain, int resultatAttendu)
+        {
+            // Assert & Act
+
+            Assert.Equals(_convertisseur.ConversionVersEntier(chiffreRomain), resultatAttendu);
         }
 
     }
