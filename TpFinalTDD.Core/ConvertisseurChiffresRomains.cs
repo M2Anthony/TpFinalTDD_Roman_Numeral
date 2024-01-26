@@ -28,6 +28,62 @@
             {
                return (int) Enum.Parse(typeof(EquivalenceChiffreRomainsVersEntier), chiffresRomains);
             }
+            List<char> listeChiffresRomains = new List<char>();
+
+            foreach (var lettre in chiffresRomains)
+            {
+                listeChiffresRomains.Add(lettre);
+            }
+
+            int somme = 0;
+
+            while(listeChiffresRomains.Count > 0)
+            {
+                char lettreActuelle = listeChiffresRomains[0];
+                char? lettreSuivante = listeChiffresRomains.Count > 1 ? listeChiffresRomains[1] : null;
+
+                if (lettreSuivante == null)
+                {
+                    somme += (int)Enum.Parse(typeof(EquivalenceChiffreRomainsVersEntier), lettreActuelle.ToString());
+                    break;
+                }
+                else
+                {
+                    int valeurLettreActuelle = (int)Enum.Parse(typeof(EquivalenceChiffreRomainsVersEntier), lettreActuelle.ToString());
+                    int valeurLettreSuivante = (int)Enum.Parse(typeof(EquivalenceChiffreRomainsVersEntier), lettreSuivante.ToString());
+
+                    if (valeurLettreSuivante > valeurLettreActuelle)
+                        somme += valeurLettreSuivante - valeurLettreActuelle;
+                    else if (valeurLettreSuivante <= valeurLettreActuelle)
+                        somme += valeurLettreSuivante + valeurLettreActuelle;
+
+                    listeChiffresRomains.RemoveAt(0);
+                    listeChiffresRomains.RemoveAt(0);
+                }
+            }
+
+            return somme;
+
+            //for (int i = 0; i < listeChiffresRomains.Count; i++)
+            //{
+            //    char lettreActuelle;
+            //    char? lettrePrecedente = null;
+            //    char? lettreSuivante = null;
+
+            //    lettreActuelle = chiffresRomains[i];
+
+            //    if (i > 0)
+            //    {
+            //        lettrePrecedente = chiffresRomains[i - 1];
+            //    }
+            //    if (i < chiffresRomains.Length - 1)
+            //    {
+            //        lettreSuivante = chiffresRomains[i + 1];
+            //    }
+
+
+
+            //}
 
             throw new NotImplementedException();
 
