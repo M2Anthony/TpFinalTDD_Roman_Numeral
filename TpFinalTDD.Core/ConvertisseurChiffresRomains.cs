@@ -10,7 +10,13 @@
         /// <exception cref="NotImplementedException"></exception>
         public int ConversionVersEntier(string chiffresRomains)
         {
+            if (string.IsNullOrEmpty(chiffresRomains))
+            {
+                throw new ArgumentException("Votre chaine ne peut pas être vide");
+            }
+
             throw new NotImplementedException();
+
         }
 
         /// <summary>
